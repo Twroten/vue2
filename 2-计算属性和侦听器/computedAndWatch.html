@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>西游记:单价{{westPrice}}, 数量:<input type="number" v-model="westNum"></li>
+            <li>水浒传:单价{{waterPrice}}, 数量:<input type="number" v-model="waterNum"></li>
+            <li>总价:{{totalPrice}}</li>
+            <li>{{msg}}</li>
+        </ul>
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                westNum: 0,
+                westPrice: 49.99,
+                waterNum: 0,
+                waterPrice: 58.99,
+                msg: ""
+            },
+            computed: {
+                totalPrice() {
+                    return this.westPrice * this.westNum + this.waterPrice * this.waterNum;
+                }
+            },
+            watch: {
+                westNum(newValue, oldValue) {
+                    // alert("oldValue:" + oldValue + "--> newValue:" + newValue)
+                    if (newValue > 3) {
+                        this.msg = "已超出库存!";
+                        this.westNum = 3;
+                    } else if (newValue < 0) {
+                        this.msg = "库存不能未负数!";
+                        this.westNum = 0;
+                    } else {
+                        this.msg = "";
+                    }
+
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

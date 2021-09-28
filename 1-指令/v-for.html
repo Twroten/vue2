@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <!-- 遍历数组 -->
+            <li v-for="(user,index) in users" :key="user.name" v-if="user.gender == '女'">
+                当前索引:{{index}} = {{user.name}} , {{user.age}} , {{user.gender}}<br>
+                对象信息:<br>
+                <!-- 遍历对象 -->
+                <span v-for="(v,k,i) in user"> 索引{{i}}: {{k}} = {{v}} <br></span>
+            </li>
+
+        </ul>
+        <ul>
+            <!-- 遍历时加上:key来区分不同数据，提高vue渲染效率 -->
+            <li v-for="(num,index) in nums" :key="index">
+                {{num}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                users: [{ name: "张三", age: 18, gender: "男" },
+                { name: "李四", age: 22, gender: "女" },
+                { name: "王二", age: 23, gender: "女" },
+                { name: "麻子", age: 32, gender: "男" }],
+                num: 1,
+                nums: [1, 2, 2, 4, 4]
+            }
+        })
+    </script>
+</body>
+
+</html>

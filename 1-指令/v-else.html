@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="random=Math.random()">Math.random()</button><br>
+        <span>{{random}}</span><br>
+
+        <span v-if="random >= 0.6">
+            random &gt;= 0.6
+        </span>
+        <span v-else-if="random >= 0.3">
+            random &gt;= 0.3
+        </span>
+        <span v-else>
+            random &lt; 0.3
+        </span>
+
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                random: 1
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

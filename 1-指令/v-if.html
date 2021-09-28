@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="show = !show">点击切换</button><br>
+        <!-- v-if=false:相当于注释整个标签 -->
+        <span v-if="show">if-看到我</span><br>
+        <!-- v-show=false:相当于display=none -->
+        <span v-show="show">show-看到我</span><br>
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

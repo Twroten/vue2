@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-model:双向绑定 -->
+    <div id="app">
+        精通的语言:<br>
+        <input type="checkbox" v-model="language" value="Java">Java<br>
+        <input type="checkbox" v-model="language" value="JS">JS<br>
+        <input type="checkbox" v-model="language" value="CSS">CSS<br>
+        选中了{{language.join(",")}}
+    </div>
+
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                language: []
+
+            },
+            methods: {
+
+            },
+        })
+
+    </script>
+</body>
+
+</html>

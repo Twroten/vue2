@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-model:双向绑定 -->
+    <div id="app">
+        <!-- 事件中直接写JS片段 -->
+        <button v-on:click="num++">JS点赞</button>
+        <button v-on:click="num--">取消</button>
+        <br><br>
+        <!-- 事件指定一个回调函数，必须是vue实例中定义的函数 -->
+        <button v-on:click="like">v-on点赞</button>
+        <button v-on:click="cancle">取消</button>
+        <br><br>
+        <!-- v-on == @ -->
+        <button @click="like">@点赞</button>
+        <button @click="cancle">取消</button>
+        <h1>有{{num}}个点赞</h1>
+
+
+        <br><br>
+        <!-- 事件修饰符 -->
+        <div style="border: 1px solid red; padding: 20px; color: red; font-size: 30px;" v-on:click.once="hello">
+            大DIV
+            <div style="border: 1px solid blueviolet; padding: 20px; color: blueviolet; font-size: 20px;"
+                v-on:click.stop="hello">
+                小div
+                <br>
+                <a href="https://www.baodu.com" @click.prevent.stop="baidu">百度</a>
+            </div>
+
+        </div>
+
+        <br><br>
+        <!-- 按键修饰符 -->
+        <input type="text" v-model="num" @keyup.up="num+=2" @keyup.down="num-=2" @click.ctrl="num=10">
+
+    </div>
+
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+
+            },
+            methods: {
+                like() {
+                    this.num++
+                },
+                cancle() {
+                    this.num--
+                },
+                hello() {
+                    alert("hello")
+                },
+                baidu() {
+                    alert("baidu")
+                }
+
+            },
+        })
+
+    </script>
+</body>
+
+</html>

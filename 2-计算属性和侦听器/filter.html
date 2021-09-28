@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user,index) in users" :key="user.id">
+                <!-- 索引:{{index}}[ {{user.id}}, {{user.name}}, {{user.gender == 1?'男':'女'}}]<br> -->
+                <!-- 索引:{{index}}[ {{user.id}}, {{user.name}}, {{user.gender | genderFilter}}]<br> -->
+                索引:{{index}}[ {{user.id}}, {{user.name}}, {{user.gender | gFilter}}]<br>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        // 全局过滤器
+        Vue.filter("gFilter", function (val) {
+            if (val == 1) {
+                return '男~'
+            } else if (val == 0) {
+                return '女~'
+            } else {
+                return '未知~'
+            }
+        })
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                users: [{ id: 1, name: 'wall', gender: 1 },
+                { id: 2, name: 'john', gender: 0 },
+                { id: 3, name: 'john', gender: -1 }]
+            },
+            // 局部过滤器
+            filters: {
+                genderFilter(val) {
+                    if (val == 1) {
+                        return '男'
+                    } else if (val == 0) {
+                        return '女'
+                    } else {
+                        return '未知'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
